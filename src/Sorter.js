@@ -5,6 +5,8 @@ export default class Sorter extends React.Component {
     render() {
         const {
             Pokemon,
+            onChange
+
         } = this.props;
 
         function getType(poke) {
@@ -20,13 +22,15 @@ export default class Sorter extends React.Component {
         sortedSelectArray = sortedSelectArray.sort();
 
         let options = new Set();
+
         for(let option of sortedSelectArray){
             options.add(<option key={option._id} value={option}>{option}</option>);
         }
         return (
             <>
             <p>Choose a Pokemon type to sort by</p>
-            <select>
+            <select onChange={onChange}>
+                <option value='all'>All</option>
                 {options}
             </select>
             </>
