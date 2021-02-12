@@ -3,6 +3,10 @@ import Pokemon from './pokemon.js'
 import Searcher from './Searcher.js'
 import Sorter from './Sorter.js'
 
+import {alphaSort, alphaSortReverse, typeSort,} from './MungeUtils.js'
+import PokeList from './PokeList.js'
+
+
 export default class SearchPage extends Component {
     state = {
         pokemon: '',
@@ -12,13 +16,21 @@ export default class SearchPage extends Component {
     }
 
 
+    handleTypeSort = (e) => {
+        this.setState({filter: e.target.value} )
+    }
     // <KeyBuilder  images={images} value={this.state.keyword} onChange={handleKeywordChange}/>
 
     render() {
         return (
-            <div className='aside'>
-                <Sorter Pokemon={Pokemon} />
-               {/* {(Pokemon.id)} */}
+            <div className='container'>
+                <div className='aside'>
+                    <Sorter Pokemon={Pokemon} onChange={this.handleTypeSort}/>
+                    {/* {(Pokemon.id)} */}
+                </div> 
+                <div className="list-container">
+                    <PokeList Pokemon={Pokemon}/>
+                </div>
             </div>
         )
     }

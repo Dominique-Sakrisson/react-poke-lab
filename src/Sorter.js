@@ -1,66 +1,27 @@
 import React from 'react'
+// import {alphaSort, alphaSortReverse, typeSort,} from './MungeUtils.js'
 
 export default class Sorter extends React.Component {
     render() {
         const {
-            Pokemon
+            Pokemon,
         } = this.props;
-
-        function alphaSort(a,b) {
-            let idA = a.pokemon.toUpperCase();
-            let idB = b.pokemon.toUpperCase();
-            if(idA < idB){
-                return -1
-            }
-            if(idA > idB){
-                return 1;
-            }
-            return 0; 
-        }
-        function alphaSortReverse(a,b){
-            let idA = a.pokemon.toUpperCase();
-            let idB = b.pokemon.toUpperCase();
-            if(idA < idB){
-                return 1
-            }
-            if(idA > idB){
-                return -1;
-            }
-            return 0;
-        }
-        
-        function typeSort(a,b) {
-            let idA = a.type_1.toUpperCase();
-            let idB = b.type_1.toUpperCase();
-            if(idA < idB){
-                return -1
-            }
-            if(idA > idB){
-                return 1;
-            }
-            return 0; 
-        }
-
-        const pokemonAlphabetic = Pokemon.sort( (a, b) => {
-            return alphaSort(a,b);
-        })
-        const pokemonReverse = Pokemon.sort((a,b) => {
-            return alphaSortReverse(a,b);
-        })
-
-        const pokeTypeSort = Pokemon.sort((a,b)=>{
-            return typeSort(a,b);
-        })
 
         function getType(poke) {
            return poke.type_1;
         }
-        const selectTypeArray = new Set(pokemonAlphabetic.map( (poke) => {
+
+        const selectTypeArray = new Set(Pokemon.map( (poke) => {
+            // poke.key = poke._id;
             return getType(poke); 
         }));
+
+        let sortedSelectArray = Array.from(selectTypeArray);
+        sortedSelectArray = sortedSelectArray.sort();
+
         let options = new Set();
-        for(let option of selectTypeArray){
-            options.add(<option value={option}>{option}</option>);
+        for(let option of sortedSelectArray){
+            options.add(<option key={option._id} value={option}>{option}</option>);
         }
         return (
             <>
