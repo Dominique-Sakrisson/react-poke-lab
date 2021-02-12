@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+.header{
+  padding: 20px;
+  border: 2px solid green;
+  background-color: red;
+}
+
+.nav-div{
+  background-color: black;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.nav-link{
+  font-size: 1.5rem;
+  color: red;
+  margin: 20px;
+}
+.selected{
+  color: white;
+  font-size: 1.5rem;
+  text-decoration-style: wavy;
+  text-decoration-color: white;
+}
+.aside{
+  box-sizing: border-box;
+  float: left;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  border-bottom: red 2px solid;
+  border-right: red 2px solid;
+}
+
+.aside select{
+  width: 125px;
+  padding: 5px;
+}
