@@ -47,7 +47,7 @@ export function typeSortReverse(a,b) {
     }
     return 0; 
 }
-
+//adds a classname of the pokemons type
 export function matchType(poke){
     let classType= '';
     if (poke.type_1 === 'bug') {
@@ -67,3 +67,7 @@ export function matchType(poke){
     };
     return classType;
 }
+
+export function getType(poke) {
+    return poke.type_1;
+ }

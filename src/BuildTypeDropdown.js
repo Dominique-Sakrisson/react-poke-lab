@@ -1,20 +1,16 @@
 import React from 'react'
-// import {alphaSort, alphaSortReverse, typeSort,} from './MungeUtils.js'
+import {getType} from './MungeUtils.js'
 
-export default class Sorter extends React.Component {
+export default class TypeDropdown extends React.Component {
     render() {
         const {
             Pokemon,
-            onChange
+            onChange,
+            sortRev
 
         } = this.props;
-
-        function getType(poke) {
-           return poke.type_1;
-        }
-
+        
         const selectTypeArray = new Set(Pokemon.map( (poke) => {
-            // poke.key = poke._id;
             return getType(poke); 
         }));
 
@@ -22,10 +18,10 @@ export default class Sorter extends React.Component {
         sortedSelectArray = sortedSelectArray.sort();
 
         let options = new Set();
+        sortedSelectArray.map((option)=> {
+             return options.add(<option key={option.id} value={option}>{option}</option>);
+        })
 
-        for(let option of sortedSelectArray){
-            options.add(<option key={option._id} value={option}>{option}</option>);
-        }
         return (
             <>
             <p>Choose a Pokemon type to sort by</p>
