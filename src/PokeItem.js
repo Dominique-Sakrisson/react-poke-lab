@@ -9,9 +9,11 @@ export default class PokeItem extends React.Component {
             
         } = this.props;
         return (
-            <div className="poke-image-div">
-                <p className={`${classType} poke-back`}></p>
-                <img src={Pokemon.url_image} alt={Pokemon.pokedex} />
+            <div className={`poke-image-div`}>
+                {/* <p className={`${classType} poke-back`}></p> */}
+                <div className={`${classType} poke-back`}>
+                    <img src={Pokemon.url_image} alt={Pokemon.pokedex} />
+                </div>
                 <Details Pokemon={Pokemon} classType={classType}/>
             </div>
         );
