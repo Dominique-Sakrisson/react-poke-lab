@@ -57,15 +57,6 @@ export default class SearchPage extends Component {
             }
             return false;
         })
-        
-        // const filterPokemonEgg = Pokemon.filter((poke)=>{
-        //     if(!this.state.filter) return true;
-        //     if(this.state.filter === 'all') return true;
-        //     if (toString(this.state.filter) === toString(poke.egg_group_1)) {
-        //         return true;
-        //     }
-        //     return false;
-        // })
         const filterPokemonEgg = Pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
@@ -102,6 +93,7 @@ export default class SearchPage extends Component {
     
         return (
             <div className='container'>
+                
                 <div className='aside'>
                     <Buttons handlers={handleButtons}/>
                     
@@ -130,6 +122,9 @@ export default class SearchPage extends Component {
                         <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
                     }
                 </div>
+               
+                    
+               
             </div>
         )
     }

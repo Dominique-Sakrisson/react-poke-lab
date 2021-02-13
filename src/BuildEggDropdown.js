@@ -24,13 +24,13 @@ export default class EggDropdown extends React.Component {
         })
         
         return (
-            <>
+            <div className='ability-drop'>
             <p className='egg-string'>Choose a Pokemon egg group to sort by</p>
             <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}
             </select>
-            </>
+            </div>
         )
     }
 }

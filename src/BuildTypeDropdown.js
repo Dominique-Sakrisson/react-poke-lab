@@ -24,13 +24,13 @@ export default class TypeDropdown extends React.Component {
         })
 
         return (
-            <>
+            <div className='ability-drop'>
             <p>Choose a Pokemon type to sort by</p>
             <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}
             </select>
-            </>
+            </div>
         )
     }
 }

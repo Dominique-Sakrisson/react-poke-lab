@@ -10,9 +10,12 @@ export default class PokeDetails extends React.Component {
         return (
             <div className='details'>
                 <div className='name-type'>
+        
                     <p className={`name-label`}>{Pokemon.pokemon.toUpperCase()}</p>
+                    
                     <p className={`type-label-${classType} type-label`}> Type: {classType}</p>
-                    <p> Egg: {Pokemon.egg_group_1}</p>
+                    <p className={`egg-label`}> Egg: {Pokemon.egg_group_1}</p>
+                    <p className={`ability-label`}>Ability: {Pokemon.ability_1}</p>
                 </div>
                 <div className='stats'>
                     <ul>
