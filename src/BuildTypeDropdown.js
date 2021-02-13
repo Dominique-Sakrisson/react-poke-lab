@@ -6,6 +6,7 @@ export default class TypeDropdown extends React.Component {
         const {
             Pokemon,
             onChange,
+            value,
             sortRev
 
         } = this.props;
@@ -25,7 +26,7 @@ export default class TypeDropdown extends React.Component {
         return (
             <>
             <p>Choose a Pokemon type to sort by</p>
-            <select onChange={onChange}>
+            <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}
             </select>

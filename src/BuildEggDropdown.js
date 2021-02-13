@@ -1,11 +1,12 @@
 import React from 'react'
 import {getEgg} from './MungeUtils.js'
 
-export default class TypeDropdown extends React.Component {
+export default class EggDropdown extends React.Component {
     render() {
         const {
             Pokemon,
             onChange,
+            value,
             sortRev
 
         } = this.props;
@@ -25,7 +26,7 @@ export default class TypeDropdown extends React.Component {
         return (
             <>
             <p className='egg-string'>Choose a Pokemon egg group to sort by</p>
-            <select onChange={onChange}>
+            <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}
             </select>

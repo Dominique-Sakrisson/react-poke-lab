@@ -14,7 +14,7 @@ export default class SearchPage extends Component {
         pokemon: '',
         sortByOrder: '',
         sortRev: '',
-        filter: '',
+        filter: 'all',
         query: '',
         dropDisplay: 'type_1'
     }
@@ -47,21 +47,29 @@ export default class SearchPage extends Component {
             this.setState({filter: 'all'});
             this.setState({dropDisplay: e.target.value});
         }
-        let handleButtons = [handleTypeButton, handleEggButton, handleAbilityButton];
+        const handleButtons = [handleTypeButton, handleEggButton, handleAbilityButton];
         
         const filterPokemonType = Pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
-            if (poke.type_1 === this.state.filter) {
+            if(poke.type_1 === this.state.filter) {
                 return true;
             }
             return false;
         })
         
+        // const filterPokemonEgg = Pokemon.filter((poke)=>{
+        //     if(!this.state.filter) return true;
+        //     if(this.state.filter === 'all') return true;
+        //     if (toString(this.state.filter) === toString(poke.egg_group_1)) {
+        //         return true;
+        //     }
+        //     return false;
+        // })
         const filterPokemonEgg = Pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
-            if (poke.type_1 === this.state.filter) {
+            if (this.state.filter === poke.egg_group_1) {
                 return true;
             }
             return false;
@@ -69,20 +77,18 @@ export default class SearchPage extends Component {
         const filterPokemonAbility = Pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
-            if (poke.type_1 === this.state.filter) {
+            if (this.state.filter === poke.ability_1) {
                 return true;
             }
             return false;
         })
-
-
-
-
+     
         const displaySearchType = filterPokemonType.filter((poke) => {
             if (!this.state.query) return true;
             if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
             return false;
         })
+
         const displaySearchEgg = filterPokemonEgg.filter((poke) => {
             if (!this.state.query) return true;
             if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
@@ -93,25 +99,20 @@ export default class SearchPage extends Component {
             if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
             return false;
         })
-
-        const eggs = new Set(Pokemon.map((poke) => {
-            return getEgg(poke);
-        }))
-        console.log(this.state.dropDisplay);
-        console.log(this.state.filter);
+    
         return (
             <div className='container'>
                 <div className='aside'>
                     <Buttons handlers={handleButtons}/>
                     
-                    {this.state.dropDisplay === 'type_1' && 
-                        <TypeDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleTypeSort}/>
+                    {this.state.dropDisplay === 'ability_1' && 
+                        <AbilityDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleAbilitySort}/>
                     }
                     {this.state.dropDisplay === 'egg_group_1' && 
                         <EggDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleEggSort}/>
                     }
-                    {this.state.dropDisplay === 'ability_1' && 
-                        <AbilityDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleAbilitySort}/>
+                    {this.state.dropDisplay === 'type_1' && 
+                        <TypeDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleTypeSort}/>
                     }
                     
                     <SortOrder onChange={handleOrder}/>
@@ -119,17 +120,15 @@ export default class SearchPage extends Component {
                 </div> 
 
                 <div className="list-container">
-                    
-                {this.state.dropDisplay === 'type_1' && 
-                    <PokeList Pokemon={displaySearchType} sortRev={this.state.sortRev}/>
-                }
-                {this.state.dropDisplay === 'egg_group_1' && 
-                    <PokeList Pokemon={displaySearchEgg} sortRev={this.state.sortRev}/>
-                }
-                {this.state.dropDisplay === 'ability_1' && 
-                    <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
-                }
-
+                    {this.state.dropDisplay === 'type_1' && 
+                        <PokeList Pokemon={displaySearchType} sortRev={this.state.sortRev}/>
+                    }
+                    {this.state.dropDisplay === 'egg_group_1' && 
+                        <PokeList Pokemon={displaySearchEgg} sortRev={this.state.sortRev}/>
+                    }
+                    {this.state.dropDisplay === 'ability_1' && 
+                        <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
+                    }
                 </div>
             </div>
         )

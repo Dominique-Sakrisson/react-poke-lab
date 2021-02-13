@@ -5,6 +5,7 @@ export default class BuildButtons extends React.Component {
         const {
             handlers
         } = this.props;
+
         return (
             <div>
                 <button onClick={handlers[0]} value='type_1'>Type</button>

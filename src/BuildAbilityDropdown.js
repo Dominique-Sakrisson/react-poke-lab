@@ -1,11 +1,12 @@
 import React from 'react'
 import {getAbility} from './MungeUtils.js'
 
-export default class TypeDropdown extends React.Component {
+export default class AbilityDropdown extends React.Component {
     render() {
         const {
             Pokemon,
             onChange,
+            value,
             sortRev
 
         } = this.props;
@@ -13,6 +14,7 @@ export default class TypeDropdown extends React.Component {
         const selectAbilityArray = new Set(Pokemon.map( (poke) => {
             return getAbility(poke); 
         }));
+        
 
         let sortedSelectArray = Array.from(selectAbilityArray);
         sortedSelectArray = sortedSelectArray.sort();
@@ -25,7 +27,7 @@ export default class TypeDropdown extends React.Component {
         return (
             <>
             <p>Choose a Pokemon ability to sort by</p>
-            <select onChange={onChange}>
+            <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}
             </select>
