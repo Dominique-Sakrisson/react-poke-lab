@@ -26,7 +26,9 @@ export default class AbilityDropdown extends React.Component {
 
         return (
             <div className='ability-drop'>
-            <p>Choose a Pokemon ability to sort by</p>
+                <div className='ability-drop-info'>
+                    <p>Choose a Pokemon ability to sort by</p>
+                </div>
             <select onChange={onChange} value={value}>
                 <option value='all'>All</option>
                 {options}

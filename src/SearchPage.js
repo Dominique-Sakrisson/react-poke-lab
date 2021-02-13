@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import Pokemon from './pokemon.js'
-import Searcher from './Searcher.js'
+import Searcher from './BuildSearcher.js'
 import TypeDropdown from './BuildTypeDropdown.js'
 import EggDropdown from './BuildEggDropdown.js'
 import AbilityDropdown from './BuildAbilityDropdown.js'
 import PokeList from './PokeList.js'
-import SortOrder from './SortOrderer.js'
-import {getEgg} from './MungeUtils.js'
+import SortOrder from './BuildSortOrderer.js'
 import Buttons from './BuildButtons.js'
 
 export default class SearchPage extends Component {
