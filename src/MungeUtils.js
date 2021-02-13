@@ -70,4 +70,10 @@ export function matchType(poke){
 
 export function getType(poke) {
     return poke.type_1;
- }
+}
+export function getEgg(poke){
+    return poke.egg_group_1;
+}
+export function getAbility(poke){
+    return poke.ability_1;
+}

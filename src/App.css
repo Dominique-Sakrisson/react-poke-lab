@@ -35,7 +35,7 @@
 }
 .header{
   padding: 20px;
-  border: 2px solid green;
+  border: 2px solid black;
   background-color: red;
 }
 .nav-div{
@@ -71,6 +71,9 @@
   font-size: 1.1rem;
   line-height: 1.2rem;
   letter-spacing: .3rem;
+}
+.egg-string{
+  color: red;
 }
 .list-container{
   width: 80%;
@@ -119,7 +122,6 @@
 .details ul{
   padding-left: 0;
   box-sizing: border-box;
-  
   width:50%;
   list-style: none;
   float: right;
@@ -153,7 +155,7 @@
   width: 150px;
 }
 .type-label-grass{
-  background-color: rgb(93,144,103);
+  background-color: rgb(41,104,23);
 }
 .type-label-fire{
   background-color: rgb(252,187,4);
@@ -162,7 +164,7 @@
   background-color: rgb(5,158,187);
 }
 .type-label-bug{
-  background-color:rgb(240,227,174);
+  background-color:rgb(134,200,118);
 }
 .type-label-flying{
   background-color:rgb(190,150,98);
