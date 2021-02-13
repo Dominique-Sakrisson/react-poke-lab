@@ -81,10 +81,15 @@
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: rgb(176,135,88);
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41a015e1-ab8f-43d9-80b0-92024013f298/d9wlus2-eb523168-82c8-4a4a-ab9b-0a332e6337aa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi80MWEwMTVlMS1hYjhmLTQzZDktODBiMC05MjAyNDAxM2YyOTgvZDl3bHVzMi1lYjUyMzE2OC04MmM4LTRhNGEtYWI5Yi0wYTMzMmU2MzM3YWEucG5nIn1dXX0.FsiLpgcs5UXhGf02Jm5nWoG73KsiSDviZmXYRVDCCic');
   background-size: cover;
+}
+.list-container::-webkit-scrollbar {
+  width: 10px;
+  color: orange;
 }
 .poke-image-div img{
   grid-row-start: 1;
