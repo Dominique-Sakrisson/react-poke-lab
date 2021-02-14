@@ -234,40 +234,8 @@
   top: 200px;
 } */
 .App {
-
+  font-family: 'Reggae One', cursive;
 }
-.App-logo {
- 
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .poke-image-div img {
-    animation: poke-image-div-img-spin infinite 100s linear;
-  }
-}
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
-.App-link {
-  color: #61dafb;
-}
-/* @keyframes poke-image-div-img-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 .header{
   display: flex;
   flex-direction: row;
@@ -275,7 +243,7 @@
   box-sizing: border-box;
   overflow: hidden;
   padding: 2%;
-  border: 2px solid black;
+  border: 2px solid #000;
   background-color: red;
   font-family: 'Reggae One', cursive;
 }
@@ -283,7 +251,7 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #000;
   border-radius: 5px;
   width: 66%;
   padding: 2%;
@@ -318,29 +286,102 @@
   font-size: 1.2rem;
 }
 .button-div{
- 
+  color: white;
+  background-color: #000;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 100%;
 }
+.toggler{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+label{
+  position: relative;
+  margin: 5px auto;
+  cursor: pointer;
+  width: 100px;
+}
+label input{
+  appearance: none;
+  display: none;
+}
+label span{
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 40px;
+  background: #222;
+  border-radius: 40px;
+  box-shadow: inset 0 2px 40px rgba(50,0,0, 0.6),
+              inset 0 2px 20px rgba(0,0,0, 0.6),
+              inset 0 -5px 0px rgba(0,0,0, 0.6);
+}
+label .indicator{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to bottom, #444, #222);
+
+  border-radius: 50%;
+  box-shadow: inset 0 2px 5px rgba(0,0,0, 0.5),
+              inset 0 2px 5px rgba(255,255,255, 0.1);
+  transition: 0.5s;
+}
+label input:checked ~ .indicator{
+  left: 60px
+}
+label input:not(:checked) ~ .indicator::before{
+  right: 80px;
+}
+label .indicator::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: #f00;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #f00,
+              0 0 10px #f00,
+              0 0 15px #f00,
+              0 0 20px #f00,
+              0 0 25px #f00,
+              0 0 30px #f00,
+              0 0 40px #f00;
+}
+label input:checked ~ .indicator::before{
+  background: #0f0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #0f0,
+              0 0 10px #0f0,
+              0 0 15px #0f0,
+              0 0 20px #0f0,
+              0 0 25px #0f0,
+              0 0 30px #0f0,
+              0 0 40px #0f0;
+}
+
 .button-div button{
   width: 30%;
   padding: 5%;
   margin: 0% 2% 0 2%;
-}
-.ability-drop{
-  font-family: 'Reggae One', cursive;
-  text-align: center;
 }
 .aside select{
   padding: 3%;
   margin: 3%;
   width: 50%;
 }
-.sorter-div {
+.sort-drop {
   font-family: 'Reggae One', cursive;
-  text-align: center;
-  
+  text-align: center; 
 }
 .searcher-div{
   text-align: center;
@@ -352,9 +393,11 @@
 }
 .searcher-div input{
   padding: 3%;
+  margin: 3%;
+
 }
-.egg-string{
-  color: red;
+.drop-info{
+  margin: auto;
 }
 .list-container{
   display: flex;
@@ -362,8 +405,6 @@
   height: 80vh;
   width:100%;
   color: white;
-  
-  
   overflow: scroll;
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41a015e1-ab8f-43d9-80b0-92024013f298/d9wlus2-eb523168-82c8-4a4a-ab9b-0a332e6337aa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi80MWEwMTVlMS1hYjhmLTQzZDktODBiMC05MjAyNDAxM2YyOTgvZDl3bHVzMi1lYjUyMzE2OC04MmM4LTRhNGEtYWI5Yi0wYTMzMmU2MzM3YWEucG5nIn1dXX0.FsiLpgcs5UXhGf02Jm5nWoG73KsiSDviZmXYRVDCCic');
   background-size: cover;
@@ -373,7 +414,6 @@
   scrollbar-color: white orange;
 }
 .poke-image-div img{
-  
   width: 50%;
 }
 .poke-list-div{
@@ -383,7 +423,7 @@
 .poke-image-div{
   background-size: cover;
   width: 100%;
-  
+  background: rgba(0,0,0,.5 );
 }
 .poke-back{
   display: flex;
@@ -391,6 +431,7 @@
   background-size: cover;
   width: 100%;
   height: 50%;
+  border-radius:50%;
 }
 .details{
   background-color: rgba(0,0,0, .9);
@@ -413,14 +454,10 @@
   width: 35%;
   
 }
-.notName{
-
-}
 .name-label{
   margin: 0;
   height: 50%;
 }
-
 .type-label{
   height:50%;
   width: 100%; 
@@ -462,22 +499,6 @@
   background-image: url('https://t792ae.c2.acecdn.net/wp-content/uploads/2019/12/Cirrus-Clouds.jpg');
 }
 
-.col-right{
-  
-}
-.col-right{
-  
-}
-.col-right:hover {
-  
-}
-
-.poke-image{
-  
-}
-.poke-image-1{
-  
-}
 
 /* Default styling here */
 

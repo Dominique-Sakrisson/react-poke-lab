@@ -3,8 +3,8 @@ import React from 'react'
 export default class SortOrderer extends React.Component {
     render() {
         return (
-            <div className='sorter-div'>
-                <p>
+            <div className='sort-drop'>
+                <p className='drop-info'>
                     Sort By Id
                 </p>
                 <select onChange={this.props.onChange}>

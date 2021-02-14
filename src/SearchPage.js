@@ -35,18 +35,29 @@ export default class SearchPage extends Component {
         }
 
         const handleTypeButton = (e) => {
+            check(e);
             this.setState({filter: 'all'});
             this.setState({dropDisplay: e.target.value});
         }
-        const handleEggButton = (e) => {
-            this.setState({filter: 'all'});
-            this.setState({dropDisplay: e.target.value});
+
+        function check(e){
+            if (e.checked === true) {
+                console.log('checked');
+                e.checked = false;
+            } else{
+                console.log('checked');
+                e.checked = true;
+            }
         }
-        const handleAbilityButton = (e) => {
-            this.setState({filter: 'all'});
-            this.setState({dropDisplay: e.target.value});
-        }
-        const handleButtons = [handleTypeButton, handleEggButton, handleAbilityButton];
+        // const handleEggButton = (e) => {
+        //     this.setState({filter: 'all'});
+        //     this.setState({dropDisplay: e.target.value});
+        // }
+        // const handleAbilityButton = (e) => {
+        //     this.setState({filter: 'all'});
+        //     this.setState({dropDisplay: e.target.value});
+        // }
+    const handleButtons = [handleTypeButton/*, handleEggButton, handleAbilityButton*/];
         
         const filterPokemonType = Pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
@@ -94,7 +105,7 @@ export default class SearchPage extends Component {
             <div className='container'>
                 
                 <div className='aside'>
-                    <Buttons handlers={handleButtons}/>
+                    <Buttons handleButton={handleTypeButton} />
                     
                     {this.state.dropDisplay === 'ability_1' && 
                         <AbilityDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleAbilitySort}/>
