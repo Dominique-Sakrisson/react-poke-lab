@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Pokemon from './pokemon.js'
+//import Pokemon from './pokemon.js'
 import Searcher from './BuildSearcher.js'
 import TypeDropdown from './BuildTypeDropdown.js'
 import EggDropdown from './BuildEggDropdown.js'
@@ -7,21 +7,37 @@ import AbilityDropdown from './BuildAbilityDropdown.js'
 import PokeList from './PokeList.js'
 import SortOrder from './BuildSortOrderer.js'
 import Buttons from './BuildButtons.js'
+import request from 'superagent';
+
 
 export default class SearchPage extends Component {
     state = {
-        pokemon: '',
-        sortByOrder: '',
-        sortRev: '',
-        filter: 'all',
+        pokemon: [],
         query: '',
+        filter: 'all',
+        sortRev: '',
+        sortByOrder: '',
         dropDisplay: 'type_1'
     }
+
+    componentDidMount = async () => {
+        await this.handlePokemonApiQuery();
+    }
+
+    handlePokemonApiQuery = async () => {
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
+
+        this.setState({pokemon: data.body.results, loading: false});
+        console.log(this.state.pokemon);
+    }
+
     render() {
+
         const handleTypeButton = (e) => {
             this.setState({filter: 'all'});
             this.setState({dropDisplay: e.target.value});
         }
+
         const handleTypeSort = (e) => {
             this.setState({filter: e.target.value} )
         }
@@ -39,7 +55,7 @@ export default class SearchPage extends Component {
         }
     
         
-        const filterPokemonType = Pokemon.filter((poke)=>{
+        const filterPokemonType = this.state.pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
             if(poke.type_1 === this.state.filter) {
@@ -47,7 +63,7 @@ export default class SearchPage extends Component {
             }
             return false;
         })
-        const filterPokemonEgg = Pokemon.filter((poke)=>{
+        const filterPokemonEgg = this.state.pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
             if (this.state.filter === poke.egg_group_1) {
@@ -55,7 +71,7 @@ export default class SearchPage extends Component {
             }
             return false;
         })
-        const filterPokemonAbility = Pokemon.filter((poke)=>{
+        const filterPokemonAbility = this.state.pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
             if (this.state.filter === poke.ability_1) {
@@ -88,13 +104,13 @@ export default class SearchPage extends Component {
                     <Buttons handleButton={handleTypeButton} />
                     
                     {this.state.dropDisplay === 'ability_1' && 
-                        <AbilityDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleAbilitySort}/>
+                        <AbilityDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleAbilitySort}/>
                     }
                     {this.state.dropDisplay === 'egg_group_1' && 
-                        <EggDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleEggSort}/>
+                        <EggDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleEggSort}/>
                     }
                     {this.state.dropDisplay === 'type_1' && 
-                        <TypeDropdown Pokemon={Pokemon} value={this.state.filter} sortRev={this.state.sortRev} onChange={handleTypeSort}/>
+                        <TypeDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleTypeSort}/>
                     }
                     
                     <SortOrder onChange={handleOrder}/>

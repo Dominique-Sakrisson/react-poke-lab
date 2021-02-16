@@ -47,26 +47,6 @@ export function typeSortReverse(a,b) {
     }
     return 0; 
 }
-//adds a classname of the pokemons type
-export function matchType(poke){
-    let classType= '';
-    if (poke.type_1 === 'bug') {
-        classType = poke.type_1;
-    }
-    if (poke.type_1 === 'fire') {
-        classType = poke.type_1;
-    }
-    if (poke.type_1 === 'grass') {
-        classType = poke.type_1;
-    }
-    if (poke.type_1 === 'flying') {
-        classType = poke.type_1;
-    }
-    if (poke.type_1 === 'water') {
-        classType = poke.type_1;
-    };
-    return classType;
-}
 
 export function getType(poke) {
     return poke.type_1;

@@ -3,7 +3,9 @@ import React from 'react'
 export default class BuildButtons extends React.Component {
     render() {
         const {
-            handleButton
+            handleButton,
+            value,
+            type,
             
         } = this.props;
 
@@ -14,10 +16,6 @@ export default class BuildButtons extends React.Component {
                 </div>
 
                 <div className='button-div'>
-                    {/* <button onClick={handleButton} value='type_1'>Type</button>
-                    <button onClick={handleButton} value='egg_group_1'>Egg</button>
-                    <button onClick={handleButton} value='ability_1'>Ability</button> */}
-
 
                 <div className='toggler'>
 

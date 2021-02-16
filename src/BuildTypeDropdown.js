@@ -7,7 +7,7 @@ export default class TypeDropdown extends React.Component {
             Pokemon,
             onChange,
             value,
-            sortRev
+            
 
         } = this.props;
         

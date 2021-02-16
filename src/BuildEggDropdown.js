@@ -7,7 +7,7 @@ export default class EggDropdown extends React.Component {
             Pokemon,
             onChange,
             value,
-            sortRev
+          
 
         } = this.props;
         
