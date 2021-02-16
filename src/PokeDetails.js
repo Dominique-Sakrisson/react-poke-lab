@@ -17,6 +17,7 @@ export default class PokeDetails extends React.Component {
                     <p className={`egg-label`}> Egg: {Pokemon.egg_group_1}</p>
                     <p className={`ability-label`}>Ability: {Pokemon.ability_1}</p>
                 </div>
+                    <p>Stats</p>
                 <div className='stats'>
                     <ul>
                         <li className='notName'>Max HP: {Pokemon.hp} </li>

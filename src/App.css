@@ -1,240 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
-/* .App {
-  text-align: center;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .poke-image-div img {
-    animation: poke-image-div-img-spin infinite 100s linear;
-  }
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-@keyframes poke-image-div-img-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.header{
-  padding: 20px;
-  border: 2px solid black;
-  background-color: red;
-}
-.nav-div{
-  background-color: black;
-  width: 300px;
-  padding: 10px;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-.nav-link{
-  font-size: 1.5rem;
-  color: red;
-  margin: 20px;
-}
-.selected{
-  color: white;
-  font-size: 1.5rem;
-  text-decoration-style: wavy;
-  text-decoration-color: white;
-}
-.aside{
-  box-sizing: border-box;
-  float: left;
-  width: 200px;
-  height: 400px;
-  padding: 10px;
-  border-bottom: red 2px solid;
-  border-right: red 2px solid;
-}
-.aside select{
-  width: 125px;
-  padding: 5px;
-  font-size: 1.1rem;
-  line-height: 1.2rem;
-  letter-spacing: .2rem;
-}
-.egg-string{
-  color: red;
-}
-.list-container{
-  width: 75%;
-  min-height: 750px;
-  max-height: 750px;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  background-color: rgb(176,135,88);
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41a015e1-ab8f-43d9-80b0-92024013f298/d9wlus2-eb523168-82c8-4a4a-ab9b-0a332e6337aa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi80MWEwMTVlMS1hYjhmLTQzZDktODBiMC05MjAyNDAxM2YyOTgvZDl3bHVzMi1lYjUyMzE2OC04MmM4LTRhNGEtYWI5Yi0wYTMzMmU2MzM3YWEucG5nIn1dXX0.FsiLpgcs5UXhGf02Jm5nWoG73KsiSDviZmXYRVDCCic');
-  background-size: cover;
-}
-.list-container::-webkit-scrollbar {
-  width: 10px;
-  scrollbar-color: white orange;
-}
-.poke-image-div img{
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  margin: auto;
-  width: 60%;
-}
-.poke-list-div{
-  box-sizing: border-box;
-  float: left;
-  background-color: blue;
-}
-.poke-image-div{
-  padding: 15px;
-  background-color: rgba(0,0,0, .8);
-  color: white;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr;
-  margin: 10px;
-  margin-right:0;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 10px;
-}
-.details{
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  font-size: 1.6rem;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin-left:10px ;
-}
-.details ul{
-  padding-left: 0;
-  box-sizing: border-box;
-  width:50%;
-  list-style: none;
-  float: right;
-  background-color: rgba(0,0,0, .8);
-}
-.details li{
-  margin: 15px 20px;
-  display: inline-block;
-  width: 100px;
-}
-.notName{
-  display: block;
-}
-.name-label{
-  /* margin: auto;
-  margin-top: 10px;
-  float: left;
-  height: 50px;
-  margin-right: 10px; 
-}
-
-.type-label{
-  /* margin: auto;
-  box-sizing: border-box;
-  font-size: 1.2rem;
-  padding-left: 15px;
-  margin-top: 10px;
-  height: 40px;
-  float: left;
-  border: 2px solid black;
-  border-radius: 50%;
-  width: 150px; 
-}
-.egg-label{
-
-}
-.ability-label{
-
-}
-.type-label-grass{
-  background-color: rgb(41,104,23);
-}
-.type-label-fire{
-  background-color: rgb(252,187,4);
-}
-.type-label-water{
-  background-color: rgb(5,158,187);
-}
-.type-label-bug{
-  background-color:rgb(134,200,118);
-}
-.type-label-flying{
-  background-color:rgb(190,150,98);
-}
-.poke-back{
- background-size: cover;
-   box-sizing: border-box; 
-  margin: 0;
-  margin-right: 10px;
-  width: 100%;
-  height: 100%;
-  border-radius: 5%;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.grass {
-  background-image: url('https://vignette2.wikia.nocookie.net/finalfantasy/images/7/77/FFIV_PSP_Forest_Battle.png/revision/latest?cb=20121009012243');
-}
-.fire{
-  background-image: url('https://cdn.bulbagarden.net/upload/thumb/d/d7/Volcanic_Pit_RTDX.png/1200px-Volcanic_Pit_RTDX.png');
-}
-.water{
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d83ohf3-7f911e73-0d36-4f31-94f9-e620fd0163c6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8yZmIyODIxYS0xNDA2LTRhMWQtOWIwNC02NjY4ZjI3OGU5NDQvZDgzb2hmMy03ZjkxMWU3My0wZDM2LTRmMzEtOTRmOS1lNjIwZmQwMTYzYzYucG5nIn1dXX0.XuRdW6R-ZJ0J1KMdZ_al_0lryqpOC9gZqKVVr7gNy1M');
-}
-.bug{
-  background-image: url('http://vignette3.wikia.nocookie.net/pokemonmultiverse/images/c/cc/Denseforest.jpg/revision/latest?cb=20140611023451');
-}
-.flying{
-  background-image: url('https://t792ae.c2.acecdn.net/wp-content/uploads/2019/12/Cirrus-Clouds.jpg');
-}
-
-.col-right{
-  position: relative;
-  right: 2.75%;
-  float: right;
-}
-.col-right{
-  width: 40px;
-  transition: width 2s;
-}
-.col-right:hover {
-  width: 400px;
-}
-
-.poke-image{
-  position: absolute;
-  width: 100px;
-}
-.poke-image-1{
-  top: 200px;
-} */
 .App {
   font-family: 'Reggae One', cursive;
+  
 }
 .header{
   display: flex;
@@ -394,7 +161,7 @@ label input:checked ~ .indicator::before{
 .searcher-div input{
   padding: 3%;
   margin: 3%;
-
+  width:45%;
 }
 .drop-info{
   margin: auto;
@@ -402,10 +169,11 @@ label input:checked ~ .indicator::before{
 .list-container{
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 600px;
   width:100%;
   color: white;
   overflow: scroll;
+  overflow-y: hide;
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41a015e1-ab8f-43d9-80b0-92024013f298/d9wlus2-eb523168-82c8-4a4a-ab9b-0a332e6337aa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi80MWEwMTVlMS1hYjhmLTQzZDktODBiMC05MjAyNDAxM2YyOTgvZDl3bHVzMi1lYjUyMzE2OC04MmM4LTRhNGEtYWI5Yi0wYTMzMmU2MzM3YWEucG5nIn1dXX0.FsiLpgcs5UXhGf02Jm5nWoG73KsiSDviZmXYRVDCCic');
   background-size: cover;
 }
@@ -417,13 +185,14 @@ label input:checked ~ .indicator::before{
   width: 50%;
 }
 .poke-list-div{
-  
-  background-color: blue;
+  background-color: rgba(0,0,0,.8 );
 }
 .poke-image-div{
   background-size: cover;
   width: 100%;
-  background: rgba(0,0,0,.5 );
+  background: rgba(0,0,0,.8 );
+  padding-top: 2%;
+  margin-top: 2%;
 }
 .poke-back{
   display: flex;
@@ -431,12 +200,11 @@ label input:checked ~ .indicator::before{
   background-size: cover;
   width: 100%;
   height: 50%;
-  border-radius:50%;
+  border-radius:10%;
 }
 .details{
   background-color: rgba(0,0,0, .9);
   text-align: center;
- 
 }
 .stats{
   display: flex;
@@ -452,7 +220,6 @@ label input:checked ~ .indicator::before{
 }
 .details li{
   width: 35%;
-  
 }
 .name-label{
   margin: 0;
@@ -466,7 +233,7 @@ label input:checked ~ .indicator::before{
 
 }
 .ability-label{
-
+  border-bottom: rgba(255,255,255, .8) 1px solid;
 }
 .type-label-grass{
   background-color: rgb(41,104,23);
