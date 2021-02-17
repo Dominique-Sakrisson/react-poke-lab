@@ -16,6 +16,15 @@ export default class BuildButtons extends React.Component {
                 </div>
 
                 <div className='button-div'>
+                <div className='toggler'>
+
+                <p>Sort By Id</p>
+                <label>
+                    <input name='toggle' onClick={handleButton} value='id' type='radio' ></input>
+                    <span></span>
+                    <i className='indicator'></i>
+                </label>
+                </div>
 
                 <div className='toggler'>
 

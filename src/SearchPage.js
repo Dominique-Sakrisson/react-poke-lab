@@ -24,10 +24,10 @@ export default class SearchPage extends Component {
 
     componentDidMount = async () => {
         this.setState({loading: true});
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=asc&perPage=166`);
         setTimeout(() => {
             this.setState({loading: false})
-        }, 1200);
+        }, 2000);
         this.setState({pokemon: data.body.results});
 
     }
@@ -35,10 +35,11 @@ export default class SearchPage extends Component {
     handlePokemonApiQuery = async () => {
         this.setState({loading: true});
         
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&direction=${this.state.sortRev}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=${this.state.sortRev}&pokemon=${this.state.query}`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 1200);
+        console.log(data);
         this.setState({pokemon: data.body.results});
         
     }
@@ -136,6 +137,7 @@ export default class SearchPage extends Component {
                     <SortOrder onChange={handleOrder}/>
                     
                     <Searcher onChange={handleInputChange}/>
+                    <button>Search</button>
                 </div> 
                     
                 {this.state.loading ? 

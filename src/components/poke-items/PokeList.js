@@ -11,11 +11,11 @@ export default class ImageList extends React.Component {
 
         let sortedArray = Pokemon.slice();
         
-        if (sortRev === 'true') {
-             sortedArray.reverse();
-         } else{
-            sortedArray.sort();
-         }
+        // if (sortRev === 'true') {
+        //      sortedArray.reverse();
+        //  } else{
+        //     sortedArray.sort();
+        //  }
        
         return (
             <>
