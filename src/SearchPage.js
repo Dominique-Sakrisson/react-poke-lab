@@ -27,9 +27,13 @@ export default class SearchPage extends Component {
     }
 
     handlePokemonApiQuery = async () => {
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
-        this.setState({loading: true})
-        this.setState({pokemon: data.body.results, loading: false});
+        this.setState({loading: true});
+        
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=10pokemon=${this.state.query}`);
+        setTimeout(() => {
+            this.setState({loading: false})
+        }, 1000);
+        this.setState({pokemon: data.body.results});
         console.log(this.state.pokemon);
     }
 
@@ -67,6 +71,7 @@ export default class SearchPage extends Component {
             }
             return false;
         })
+
         const filterPokemonEgg = this.state.pokemon.filter((poke)=>{
             if(!this.state.filter) return true;
             if(this.state.filter === 'all') return true;
@@ -120,10 +125,10 @@ export default class SearchPage extends Component {
                     <SortOrder onChange={handleOrder}/>
                     <Searcher onChange={handleInputChange}/>
                 </div> 
-                    {
-                        this.state.loading 
-                        ? <Spinner /> :
-                <div className="list-container">
+                    
+                {this.state.loading ? 
+                <Spinner /> 
+                : <div className="list-container">
                     {this.state.dropDisplay === 'type_1' && 
                         <PokeList Pokemon={displaySearchType} sortRev={this.state.sortRev}/>
                     }
