@@ -16,20 +16,26 @@ export default class SearchPage extends Component {
         pokemon: [],
         query: '',
         loading: false,
-        filter: 'all',
-        sortRev: '',
+        filter: '',
+        sortRev: 'asc',
         sortByOrder: '',
         dropDisplay: 'type_1'
     }
 
     componentDidMount = async () => {
-        await this.handlePokemonApiQuery();
+        this.setState({loading: true});
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`);
+        setTimeout(() => {
+            this.setState({loading: false})
+        }, 1200);
+        this.setState({pokemon: data.body.results});
+
     }
 
     handlePokemonApiQuery = async () => {
         this.setState({loading: true});
         
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&direction=${this.state.sortRev}`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 1200);
@@ -55,11 +61,14 @@ export default class SearchPage extends Component {
         const handleAbilitySort = (e) => {
             this.setState({filter: e.target.value} )
         }
-        const handleOrder = (e) => {
-            this.setState({sortRev: e.target.value});
+        const handleOrder = async (e) => {
+            await this.setState({sortRev: e.target.value});
+            await this.handlePokemonApiQuery();
         }
-        const handleInputChange = (e) => {
-            this.setState({query: e.target.value})
+        const handleInputChange = async (e) => {
+            await this.setState({query: e.target.value})
+
+            await this.handlePokemonApiQuery();
         }
     
         
@@ -105,7 +114,9 @@ export default class SearchPage extends Component {
             if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
             return false;
         })
-    
+        console.log(this.state.pokemon);
+        console.log(this.state.sortRev);
+
         return (
             <div className='container'>
                 
@@ -123,21 +134,23 @@ export default class SearchPage extends Component {
                     }
                     
                     <SortOrder onChange={handleOrder}/>
+                    
                     <Searcher onChange={handleInputChange}/>
                 </div> 
                     
                 {this.state.loading ? 
                 <Spinner /> 
                 : <div className="list-container">
-                    {this.state.dropDisplay === 'type_1' && 
-                        <PokeList Pokemon={displaySearchType} sortRev={this.state.sortRev}/>
-                    }
+                    {/* {this.state.dropDisplay === 'type_1' &&  */}
+                        <PokeList Pokemon={this.state.pokemon} sortRev={this.state.sortRev}/>
+                    {/* } */}
+{/* 
                     {this.state.dropDisplay === 'egg_group_1' && 
-                        <PokeList Pokemon={displaySearchEgg} sortRev={this.state.sortRev}/>
+                        <PokeList Pokemon={this.} sortRev={this.state.sortRev}/>
                     }
                     {this.state.dropDisplay === 'ability_1' && 
                         <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
-                    }
+                    } */}
                 </div>
                 }
             </div>
