@@ -20,10 +20,10 @@ export default class PokeDetails extends React.Component {
                     <p>Stats</p>
                 <div className='stats'>
                     <ul>
-                        <li className='notName'>Max HP: {Pokemon.hp} </li>
-                        <li className='notName'>Attack: {Pokemon.attack} </li>
-                        <li className='notName'>Defense: {Pokemon.defense}</li>
-                        <li className='notName'>Speed: {Pokemon.speed}</li>
+                        <li>Max HP: {Pokemon.hp} </li>
+                        <li>Attack: {Pokemon.attack} </li>
+                        <li>Defense: {Pokemon.defense}</li>
+                        <li>Speed: {Pokemon.speed}</li>
                     </ul>
                 </div>
             </div>

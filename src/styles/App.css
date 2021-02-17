@@ -182,17 +182,18 @@ label input:checked ~ .indicator::before{
   scrollbar-color: white orange;
 }
 .poke-image-div img{
+ 
   width: 50%;
 }
 .poke-list-div{
   background-color: rgba(0,0,0,.8 );
 }
 .poke-image-div{
-  background-size: cover;
+  box-sizing: border-box;
   width: 100%;
   background: rgba(0,0,0,.8 );
-  padding-top: 2%;
-  margin-top: 2%;
+  padding: 1%;
+ 
 }
 .poke-back{
   display: flex;
@@ -205,7 +206,7 @@ label input:checked ~ .indicator::before{
 .details{
   background-color: rgba(0,0,0, .9);
   text-align: center;
-  margin-bottom: 10px;
+
 }
 .stats{
   display: flex;
@@ -216,8 +217,8 @@ label input:checked ~ .indicator::before{
 }
 .stats ul{
   position: relative;
-  right: 15px;
-  width: 100%;
+ 
+  width: 80%;
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -240,7 +241,7 @@ label input:checked ~ .indicator::before{
   background: rgba(255, 140, 50, .6)
 }
 .ability-label{
-  border-bottom: rgba(255,255,255, .8) 1px solid;
+ 
 }
 .type-label-grass{
   background-color: rgb(41,104,23);
@@ -323,15 +324,22 @@ label input:checked ~ .indicator::before{
   }
   
 }
+/*
+=================================================================
+================================================================
 
+=================================================================
+================================================================
+
+=================================================================
+================================================================
+
+=================================================================
+================================================================
+*/
 /* // Larger pads */
-@media only screen and (min-width: 768px) and (max-width: 991px){
+@media only screen and (min-width: 768px) and (max-width: 1019px){
   
-  
-}
-
-/* // Horizontal pads and laptops */
-@media only screen and (min-width: 992px ) and (max-width: 1381px) {
   .header{
     display: flex;
     flex-direction: row;
@@ -340,8 +348,9 @@ label input:checked ~ .indicator::before{
     overflow: hidden;
     padding: 2%;
     border: 2px solid black;
-    background-color: red;
+    background-color: blue;
     font-family: 'Reggae One', cursive;
+    height: 100%;
   }
   .nav-div{
     display: flex;
@@ -350,7 +359,7 @@ label input:checked ~ .indicator::before{
     box-sizing: border-box;
     background-color: black;
     border-radius: 5px;
-    width: 30%;
+    width: 66%;
     padding: 2%;
   }
   .nav-link{
@@ -367,31 +376,105 @@ label input:checked ~ .indicator::before{
     text-decoration-color: white;
   }
   .aside{
-    width: 20%;
+    width: 33%;
+    float: left;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
   }
+
   .button-info{
-    width: 100%;
     margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
     font-family: 'Reggae One', cursive;
     font-size: 1.2rem;
   }
-  .button-div{
-   
+  
+  .toggler{
     display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  .button-div button{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
     width: 30%;
-    padding: 5%;
-    margin: 0% 2% 0 2%;
+  }
+  .toggler p{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 70px;
+    max-height: 70px;
+  
+  
+  }
+
+  label{
+    position: relative;
+    margin: 5px auto;
+    cursor: pointer;
+    width: 80%;
+  }
+  label input{
+    appearance: none;
+    display: none;
+  }
+ 
+  label span{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: #222;
+    border-radius: 40px;
+    box-shadow: inset 0 2px 40px rgba(50,0,0, 0.6),
+                inset 0 2px 20px rgba(0,0,0, 0.6),
+                inset 0 -5px 0px rgba(0,0,0, 0.6);
+  }
+  label .indicator{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:50%;
+    height: 40px;
+    background: linear-gradient(to bottom, #444, #222);
+  
+    border-radius: 50%;
+    box-shadow: inset 0 2px 5px rgba(0,0,0, 0.5),
+                inset 0 2px 5px rgba(255,255,255, 0.1);
+    transition: 0.5s;
+  }
+  label input:checked ~ .indicator{
+    left: 50%
+  }
+  /* label input:not(:checked) ~ .indicator::before{
+    right: 20px;
+  } */
+  label .indicator::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background: #f00;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #f00,
+                0 0 10px #f00,
+                0 0 15px #f00,
+                0 0 20px #f00,
+                0 0 25px #f00,
+                0 0 30px #f00,
+                0 0 40px #f00;
+  }
+  label input:checked ~ .indicator::before{
+    background: #0f0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #0f0,
+                0 0 10px #0f0,
+                0 0 15px #0f0,
+                0 0 20px #0f0,
+                0 0 25px #0f0,
+                0 0 30px #0f0,
+                0 0 40px #0f0;
   }
   .ability-drop{
     font-family: 'Reggae One', cursive;
@@ -400,7 +483,7 @@ label input:checked ~ .indicator::before{
   .aside select{
     padding: 3%;
     margin: 3%;
-    width: 50%;
+    
   }
   .sorter-div {
     font-family: 'Reggae One', cursive;
@@ -422,7 +505,9 @@ label input:checked ~ .indicator::before{
     color: red;
   }
   .list-container{
-    width:60%;
+   width: 65%;
+
+    height: 100vh;
     display: flex;
     flex-direction: column;
     color: white;
@@ -477,9 +562,287 @@ label input:checked ~ .indicator::before{
     width: 35%;
     
   }
-  .notName{
+  
+  .name-label{
+    margin: 0;
+    height: 50%;
+  }
+  
+  .type-label{
+    height:50%;
+    width: 100%; 
+  }
+  
+  .ability-label{
   
   }
+  .type-label-grass{
+    background-color: rgb(41,104,23);
+  }
+  .type-label-fire{
+    background-color: rgb(252,187,4);
+  }
+  .type-label-water{
+    background-color: rgb(5,158,187);
+  }
+  .type-label-bug{
+    background-color:rgb(134,200,118);
+  }
+  .type-label-flying{
+    background-color:rgb(190,150,98);
+  }
+  .grass {
+    background-image: url('https://vignette2.wikia.nocookie.net/finalfantasy/images/7/77/FFIV_PSP_Forest_Battle.png/revision/latest?cb=20121009012243');
+  }
+  .fire{
+    background-image: url('https://cdn.bulbagarden.net/upload/thumb/d/d7/Volcanic_Pit_RTDX.png/1200px-Volcanic_Pit_RTDX.png');
+  }
+  .water{
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d83ohf3-7f911e73-0d36-4f31-94f9-e620fd0163c6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8yZmIyODIxYS0xNDA2LTRhMWQtOWIwNC02NjY4ZjI3OGU5NDQvZDgzb2hmMy03ZjkxMWU3My0wZDM2LTRmMzEtOTRmOS1lNjIwZmQwMTYzYzYucG5nIn1dXX0.XuRdW6R-ZJ0J1KMdZ_al_0lryqpOC9gZqKVVr7gNy1M');
+  }
+  .bug{
+    background-image: url('http://vignette3.wikia.nocookie.net/pokemonmultiverse/images/c/cc/Denseforest.jpg/revision/latest?cb=20140611023451');
+  }
+  .flying{
+    background-image: url('https://t792ae.c2.acecdn.net/wp-content/uploads/2019/12/Cirrus-Clouds.jpg');
+  }
+  
+  
+}
+
+/* // Horizontal pads and laptops */
+@media only screen and (min-width: 1020px ) {
+ .app{
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+ }
+
+  .header{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 2%;
+    border: 2px solid black;
+    background-color: green;
+    font-family: 'Reggae One', cursive;
+    height: 100%;
+  }
+  .nav-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    background-color: black;
+    border-radius: 5px;
+    width: 66%;
+    padding: 2%;
+  }
+  .nav-link{
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100%;
+    color: blue;
+    margin: 2%;
+  }
+  .selected{
+    color: white;
+    font-size: 1.5rem;
+    text-decoration-style: wavy;
+    text-decoration-color: white;
+  }
+  .aside{
+    width: 33%;
+    max-width: 400px;
+    float: left;
+    height: 100%;
+  }
+  .button-info{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: 'Reggae One', cursive;
+    font-size: 1.2rem;
+  }
+  
+  .toggler{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 30%;
+  }
+  .toggler p{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 70px;
+    max-height: 70px;
+  }
+
+  label{
+    position: relative;
+    margin: 5px auto;
+    cursor: pointer;
+    width: 80%;
+  }
+  label input{
+    appearance: none;
+    display: none;
+  }
+ 
+  label span{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: #222;
+    border-radius: 40px;
+    box-shadow: inset 0 2px 40px rgba(50,0,0, 0.6),
+                inset 0 2px 20px rgba(0,0,0, 0.6),
+                inset 0 -5px 0px rgba(0,0,0, 0.6);
+  }
+  label .indicator{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:50%;
+    height: 40px;
+    background: linear-gradient(to bottom, #444, #222);
+  
+    border-radius: 50%;
+    box-shadow: inset 0 2px 5px rgba(0,0,0, 0.5),
+                inset 0 2px 5px rgba(255,255,255, 0.1);
+    transition: 0.5s;
+  }
+  label input:checked ~ .indicator{
+    left: 50%
+  }
+  /* label input:not(:checked) ~ .indicator::before{
+    right: 20px;
+  } */
+  label .indicator::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background: #f00;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #f00,
+                0 0 10px #f00,
+                0 0 15px #f00,
+                0 0 20px #f00,
+                0 0 25px #f00,
+                0 0 30px #f00,
+                0 0 40px #f00;
+  }
+  label input:checked ~ .indicator::before{
+    background: #0f0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #0f0,
+                0 0 10px #0f0,
+                0 0 15px #0f0,
+                0 0 20px #0f0,
+                0 0 25px #0f0,
+                0 0 30px #0f0,
+                0 0 40px #0f0;
+  }
+  .ability-drop{
+    font-family: 'Reggae One', cursive;
+    text-align: center;
+  }
+  .aside select{
+    padding: 3%;
+    margin: 3%;
+    width: 50%;
+  }
+  .sorter-div {
+    font-family: 'Reggae One', cursive;
+    text-align: center;
+    
+  }
+  .searcher-div{
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .search-info{
+    font-family: 'Reggae One', cursive;
+    font-size: 1.2rem;
+  }
+  .searcher-div input{
+    padding: 3%;
+  }
+  .egg-string{
+    color: red;
+  }
+  .list-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width:65%;
+    height: 80vh;
+    color: white;
+    
+    
+  overflow: scroll;
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41a015e1-ab8f-43d9-80b0-92024013f298/d9wlus2-eb523168-82c8-4a4a-ab9b-0a332e6337aa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi80MWEwMTVlMS1hYjhmLTQzZDktODBiMC05MjAyNDAxM2YyOTgvZDl3bHVzMi1lYjUyMzE2OC04MmM4LTRhNGEtYWI5Yi0wYTMzMmU2MzM3YWEucG5nIn1dXX0.FsiLpgcs5UXhGf02Jm5nWoG73KsiSDviZmXYRVDCCic');
+    background-size: cover;
+  }
+  .list-container::-webkit-scrollbar {
+    /* width: 10px; */
+    scrollbar-color: white orange;
+  }
+  .poke-image-div img{
+    
+    width: 50%;
+  }
+  .poke-list-div{
+    background-color: blue;
+  }
+  .poke-image-div{
+    background-size: cover;
+    max-width: 500px;
+    margin: auto;
+  }
+  .poke-back{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    width: 95%;
+    height: 50%;
+  }
+  .details{
+    background-color: rgba(0,0,0, .9);
+    text-align: center;
+   
+  }
+  .stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .stats ul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+    list-style: none;
+    background-color: rgba(0,0,0, .8);
+  }
+  .details li{
+    width: 25%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  
   .name-label{
     margin: 0;
     height: 50%;
@@ -526,35 +889,15 @@ label input:checked ~ .indicator::before{
     background-image: url('https://t792ae.c2.acecdn.net/wp-content/uploads/2019/12/Cirrus-Clouds.jpg');
   }
   
-  .col-right{
-    
-  }
-  .col-right{
-    
-  }
-  .col-right:hover {
-    
-  }
-  
-  .poke-image{
-    
-  }
-  .poke-image-1{
-    
-  }
 }
 
-/* // Really large screens */
-@media only screen and (min-width: 1382px) {
-   
-   
-}
 
-/* // 2X size (iPhone 4 etc) */
-@media only screen and 
-       (-webkit-min-device-pixel-ratio: 1.5), only screen and 
-       (-o-min-device-pixel-ratio: 3/2), only screen and 
-       (min-device-pixel-ratio: 1.5) {
-
-
+@media only screen and (min-width: 1600px ) {
+  .nav-div{
+    width: 66%;
+  }
+  .poke-image-div{
+    max-width: 2000px;
+    width: 100%;
+  }
 }
