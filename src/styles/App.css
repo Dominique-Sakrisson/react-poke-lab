@@ -9,6 +9,7 @@
   justify-content: space-around;
   box-sizing: border-box;
   overflow: hidden;
+  margin: 0;
   padding: 2%;
   border: 2px solid #000;
   background-color: red;
@@ -20,8 +21,9 @@
   box-sizing: border-box;
   background-color: #000;
   border-radius: 5px;
-  width: 66%;
-  padding: 2%;
+  width: 100%;
+ 
+  font-size: 1rem;
 }
 .nav-link{
   text-align: center;
@@ -50,7 +52,7 @@
   padding: 0;
   text-align: center;
   font-family: 'Reggae One', cursive;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .button-div{
   color: white;
@@ -59,6 +61,9 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  font-size: .8rem;
+  padding: 5px;
+
 }
 .toggler{
   display: flex;
@@ -66,11 +71,17 @@
   justify-content: center;
   margin: 0 auto;
 }
+.toggler p{
+  text-align: center;
+  width: 80%;
+}
 label{
   position: relative;
   margin: 5px auto;
   cursor: pointer;
   width: 100px;
+  box-sizing: border-box;
+  padding: 5px;
 }
 label input{
   appearance: none;
@@ -79,7 +90,7 @@ label input{
 label span{
   position: relative;
   display: block;
-  width: 100px;
+  width:100%;
   height: 40px;
   background: #222;
   border-radius: 40px;
@@ -89,7 +100,7 @@ label span{
 }
 label .indicator{
   position: absolute;
-  top:0;
+  top:5px;
   left: 0;
   width: 40px;
   height: 40px;
@@ -101,7 +112,7 @@ label .indicator{
   transition: 0.5s;
 }
 label input:checked ~ .indicator{
-  left: 60px
+  left: 55px
 }
 label input:not(:checked) ~ .indicator::before{
   right: 80px;
@@ -190,34 +201,33 @@ label input:checked ~ .indicator::before{
 }
 .poke-image-div{
   box-sizing: border-box;
+  padding: 0 5px;
   width: 100%;
   background: rgba(0,0,0,.8 );
-  padding: 1%;
- 
 }
 .poke-back{
   display: flex;
   justify-content: center;
   background-size: cover;
   width: 100%;
-  height: 50%;
+ 
   border-radius:10%;
 }
 .details{
+  box-sizing: border-box;
   background-color: rgba(0,0,0, .9);
   text-align: center;
-
+  margin: 0;
+  padding: 0;
 }
 .stats{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 5px;
-  margin: 5px auto;
+  padding-bottom: 20px;
+  
 }
 .stats ul{
-  position: relative;
- 
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -225,6 +235,8 @@ label input:checked ~ .indicator::before{
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(0,0,0, .8);
+  border-bottom: 2px #FFF solid;
+  padding-bottom: 5px;
 }
 .details li{
   width: 35%;
@@ -240,9 +252,7 @@ label input:checked ~ .indicator::before{
 .egg-label{
   background: rgba(255, 140, 50, .6)
 }
-.ability-label{
- 
-}
+
 .type-label-grass{
   background-color: rgb(41,104,23);
 }
@@ -348,7 +358,7 @@ label input:checked ~ .indicator::before{
     overflow: hidden;
     padding: 2%;
     border: 2px solid black;
-    background-color: blue;
+    background-color: red;
     font-family: 'Reggae One', cursive;
     height: 100%;
   }
@@ -430,7 +440,7 @@ label input:checked ~ .indicator::before{
   }
   label .indicator{
     position: absolute;
-    top:0;
+    top:5px;
     left: 0;
     width:50%;
     height: 40px;
@@ -628,7 +638,7 @@ label input:checked ~ .indicator::before{
     overflow: hidden;
     padding: 2%;
     border: 2px solid black;
-    background-color: green;
+    background-color: red;
     font-family: 'Reggae One', cursive;
     height: 100%;
   }
@@ -708,7 +718,7 @@ label input:checked ~ .indicator::before{
   }
   label .indicator{
     position: absolute;
-    top:0;
+    top:5px;
     left: 0;
     width:50%;
     height: 40px;
