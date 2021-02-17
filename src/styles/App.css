@@ -228,15 +228,20 @@ label input:checked ~ .indicator::before{
   
 }
 .stats ul{
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
   background-color: rgba(0,0,0, .8);
   border-bottom: 2px #FFF solid;
   padding-bottom: 5px;
+  padding-left: 0;
+  margin-left: 0;
+}
+.stats li{
+  max-width: 75px;
+  min-width: 75px;
+  margin:  0 auto;
 }
 .details li{
   width: 35%;
@@ -321,32 +326,7 @@ label input:checked ~ .indicator::before{
  
 }
 
-/* // Pads and larger phones */
-@media only screen and (min-width: 600px) and (max-width: 767px){
-  nav ul li{
-      display: inline-block;
-      line-height: 10px;
-      margin-top: 5%;
-      
-     
-      width: 100px;
-      float: left;
-  }
-  
-}
-/*
-=================================================================
-================================================================
 
-=================================================================
-================================================================
-
-=================================================================
-================================================================
-
-=================================================================
-================================================================
-*/
 /* // Larger pads */
 @media only screen and (min-width: 768px) and (max-width: 1019px){
   
@@ -389,6 +369,8 @@ label input:checked ~ .indicator::before{
     width: 33%;
     float: left;
     height: 100%;
+    margin-right: 5px;
+    border-right: 2px solid white;
   }
 
   .button-info{
@@ -397,6 +379,11 @@ label input:checked ~ .indicator::before{
     text-align: left;
     font-family: 'Reggae One', cursive;
     font-size: 1.2rem;
+  }
+  .button-div{
+    box-sizing: border-box;
+    margin-left: 5px;
+    width: 100%;
   }
   
   .toggler{
@@ -678,6 +665,12 @@ label input:checked ~ .indicator::before{
     font-family: 'Reggae One', cursive;
     font-size: 1.2rem;
   }
+
+  .button-div{
+    box-sizing: border-box;
+    margin-left: 5px;
+    width: 100%;
+  }
   
   .toggler{
     display: flex;
@@ -833,72 +826,20 @@ label input:checked ~ .indicator::before{
     text-align: center;
    
   }
-  .stats{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+  
   .stats ul{
+    margin-left: 0;
+    padding-left: 0;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 0 auto;
+    text-align: center;
     list-style: none;
     background-color: rgba(0,0,0, .8);
+  }  
+  .stats li{
+    max-width: 75px;
+    min-width: 75px;
+    margin:  0 auto;
   }
-  .details li{
-    width: 25%;
-    padding: 0;
-    margin: 0 auto;
-  }
-  
-  .name-label{
-    margin: 0;
-    height: 50%;
-  }
-  
-  .type-label{
-    height:50%;
-    width: 100%; 
-  }
-  .egg-label{
-  
-  }
-  .ability-label{
-  
-  }
-  .type-label-grass{
-    background-color: rgb(41,104,23);
-  }
-  .type-label-fire{
-    background-color: rgb(252,187,4);
-  }
-  .type-label-water{
-    background-color: rgb(5,158,187);
-  }
-  .type-label-bug{
-    background-color:rgb(134,200,118);
-  }
-  .type-label-flying{
-    background-color:rgb(190,150,98);
-  }
-  .grass {
-    background-image: url('https://vignette2.wikia.nocookie.net/finalfantasy/images/7/77/FFIV_PSP_Forest_Battle.png/revision/latest?cb=20121009012243');
-  }
-  .fire{
-    background-image: url('https://cdn.bulbagarden.net/upload/thumb/d/d7/Volcanic_Pit_RTDX.png/1200px-Volcanic_Pit_RTDX.png');
-  }
-  .water{
-    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d83ohf3-7f911e73-0d36-4f31-94f9-e620fd0163c6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8yZmIyODIxYS0xNDA2LTRhMWQtOWIwNC02NjY4ZjI3OGU5NDQvZDgzb2hmMy03ZjkxMWU3My0wZDM2LTRmMzEtOTRmOS1lNjIwZmQwMTYzYzYucG5nIn1dXX0.XuRdW6R-ZJ0J1KMdZ_al_0lryqpOC9gZqKVVr7gNy1M');
-  }
-  .bug{
-    background-image: url('http://vignette3.wikia.nocookie.net/pokemonmultiverse/images/c/cc/Denseforest.jpg/revision/latest?cb=20140611023451');
-  }
-  .flying{
-    background-image: url('https://t792ae.c2.acecdn.net/wp-content/uploads/2019/12/Cirrus-Clouds.jpg');
-  }
-  
 }
 
 
