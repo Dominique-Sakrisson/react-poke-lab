@@ -3,12 +3,22 @@
   font-family: 'Reggae One', cursive;
   
 }
+.gif-parent{
+  position: relative;
+  bottom: 400px;
+  width: 90%;
+  height: 0;
+  margin: 0 auto;
+  text-align: left;
+}
 .load-gif{
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  position: absolute;
-  top: 25vh
+  top: 25vh;
+  margin: 0 auto;
+  box-shadow:   0px -15px 20px 10px red ,
+                10px -15px 10px 10px green ;
 }
 .header{
   display: flex;
@@ -162,9 +172,14 @@ label input:checked ~ .indicator::before{
 .aside select{
   padding: 3%;
   margin: 3%;
+  height: 30%;
   width: 50%;
+  min-width: 115px;
+  max-width: 115px;
+
 }
 .sort-drop {
+  display: flex;
   font-family: 'Reggae One', cursive;
   text-align: center; 
 }
@@ -268,7 +283,7 @@ label input:checked ~ .indicator::before{
   background: rgba(255, 140, 50, .6)
 }
 
-.type-label-grass{
+/* .type-label-grass{
   background-color: rgb(41,104,23);
 }
 .type-label-fire{
@@ -282,7 +297,7 @@ label input:checked ~ .indicator::before{
 }
 .type-label-flying{
   background-color:rgb(190,150,98);
-}
+} */
 .grass {
   background-image: url('https://vignette2.wikia.nocookie.net/finalfantasy/images/7/77/FFIV_PSP_Forest_Battle.png/revision/latest?cb=20121009012243');
 }

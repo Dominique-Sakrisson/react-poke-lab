@@ -32,9 +32,9 @@ export default class SearchPage extends Component {
         const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
         setTimeout(() => {
             this.setState({loading: false})
-        }, 1000);
+        }, 1200);
         this.setState({pokemon: data.body.results});
-        console.log(this.state.pokemon);
+        
     }
 
 
