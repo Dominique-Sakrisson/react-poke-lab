@@ -19,29 +19,36 @@ export default class SearchPage extends Component {
         filter: '',
         sortRev: 'asc',
         sortByOrder: '',
-        dropDisplay: 'type_1'
+        dropDisplay: 'type_1',
+        currentPage: 1,
     }
 
     componentDidMount = async () => {
         this.setState({loading: true});
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=asc&perPage=166`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 2000);
         this.setState({pokemon: data.body.results});
-
     }
 
     handlePokemonApiQuery = async () => {
         this.setState({loading: true});
         
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=${this.state.sortRev}&pokemon=${this.state.query}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?direction=${this.state.sortRev}&page=${this.state.currentPage}&pokemon=${this.state.query}&`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 1200);
-        console.log(data);
         this.setState({pokemon: data.body.results});
         
+    }
+    handlePrevPage = async() =>{
+        await this.setState({currentPage: this.state.currentPage - 1});
+        await this.handlePokemonApiQuery();
+    }
+    handleNextPage = async() =>{
+        await this.setState({currentPage: this.state.currentPage + 1});
+        await this.handlePokemonApiQuery();
     }
 
 
@@ -99,24 +106,24 @@ export default class SearchPage extends Component {
             return false;
         })
      
-        const displaySearchType = filterPokemonType.filter((poke) => {
-            if (!this.state.query) return true;
-            if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-            return false;
-        })
+        // const displaySearchType = filterPokemonType.filter((poke) => {
+        //     if (!this.state.query) return true;
+        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
+        //     return false;
+        // })
 
-        const displaySearchEgg = filterPokemonEgg.filter((poke) => {
-            if (!this.state.query) return true;
-            if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-            return false;
-        })
-        const displaySearchAbility = filterPokemonAbility.filter((poke) => {
-            if (!this.state.query) return true;
-            if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-            return false;
-        })
-        console.log(this.state.pokemon);
-        console.log(this.state.sortRev);
+        // const displaySearchEgg = filterPokemonEgg.filter((poke) => {
+        //     if (!this.state.query) return true;
+        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
+        //     return false;
+        // })
+        // const displaySearchAbility = filterPokemonAbility.filter((poke) => {
+        //     if (!this.state.query) return true;
+        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
+        //     return false;
+        // })
+        // console.log(this.state.pokemon);
+        // console.log(this.state.sortRev);
 
         return (
             <div className='container'>
@@ -137,7 +144,12 @@ export default class SearchPage extends Component {
                     <SortOrder onChange={handleOrder}/>
                     
                     <Searcher onChange={handleInputChange}/>
-                    <button>Search</button>
+                    <button>Submit Search</button>
+
+
+                    <button onClick={this.handlePrevPage}>Prev</button>
+                    <span>Page {this.state.currentPage}</span>
+                    <button onClick={this.handleNextPage}>Next</button>
                 </div> 
                     
                 {this.state.loading ? 
