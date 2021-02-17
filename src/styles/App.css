@@ -3,6 +3,13 @@
   font-family: 'Reggae One', cursive;
   
 }
+.load-gif{
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 25vh
+}
 .header{
   display: flex;
   flex-direction: row;
@@ -172,7 +179,7 @@ label input:checked ~ .indicator::before{
 .searcher-div input{
   padding: 3%;
   margin: 3%;
-  width:45%;
+  width:50%;
 }
 .drop-info{
   margin: auto;
@@ -204,6 +211,9 @@ label input:checked ~ .indicator::before{
   padding: 0 5px;
   width: 100%;
   background: rgba(0,0,0,.8 );
+}
+.poke-image-div:hover{
+  box-shadow: 5px 10px 15px #0f0;
 }
 .poke-back{
   display: flex;
