@@ -29,7 +29,7 @@ export default class SearchPage extends Component {
     handlePokemonApiQuery = async () => {
         this.setState({loading: true});
         
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=10pokemon=${this.state.query}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 1000);
