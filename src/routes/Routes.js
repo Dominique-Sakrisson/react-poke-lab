@@ -1,13 +1,13 @@
 import React from 'react'
-import HomePage from './HomePage.js'
-import SearchPage from './SearchPage.js'
-import './App.css';
+import HomePage from '../HomePage.js'
+import SearchPage from '../SearchPage.js'
+import '../styles/App.css';
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
-import Header from './Header.js'
+import Header from '../components/Header.js'
 
 export default class Routes extends React.Component {
     render() {

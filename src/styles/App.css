@@ -210,6 +210,7 @@ label input:checked ~ .indicator::before{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 5px;
 }
 .stats ul{
   width: 100%;
@@ -230,7 +231,7 @@ label input:checked ~ .indicator::before{
   width: 100%; 
 }
 .egg-label{
-
+  background: rgba(255, 140, 50, .6)
 }
 .ability-label{
   border-bottom: rgba(255,255,255, .8) 1px solid;
@@ -267,6 +268,27 @@ label input:checked ~ .indicator::before{
 }
 .psychic{
   background-image: url('https://2.bp.blogspot.com/-cPpPujxKqtA/TrWW146EhfI/AAAAAAAAAO4/CXNQV1KvKVw/s1600/mega-fractal_picture.jpg');
+}
+.normal{
+  background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2013/12/02/181707/587bf042e9f7ac767a94341bd09eb19a.jpg');
+}
+.electric{
+  background-image: url('https://wallpapercave.com/wp/SngOt24.jpg');
+}
+.fairy{
+  background-image: url('https://i.ytimg.com/vi/F4tHUeG-Rsw/maxresdefault.jpg');
+}
+.fighting{
+  background-image: url('https://wallpapercave.com/wp/wp2776768.jpg');
+}
+.ground{
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d84cayh-8e1b25c5-7112-445a-b383-e8899331b45c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8yZmIyODIxYS0xNDA2LTRhMWQtOWIwNC02NjY4ZjI3OGU5NDQvZDg0Y2F5aC04ZTFiMjVjNS03MTEyLTQ0NWEtYjM4My1lODg5OTMzMWI0NWMucG5nIn1dXX0.LW2CwIEgny7Yr5Yp5-XzGa4N2SxUJi1e9aDcJDyPnLk');
+}
+.poison{
+  background-image: url('https://vignette.wikia.nocookie.net/pokemon-rol-ffl/images/c/c4/Swamp-wallpaper-6.jpg/revision/latest?cb=20160420124147&path-prefix=es');
+}
+.rock{
+  background-image: url('http://vignette3.wikia.nocookie.net/pokemon/images/c/c2/Mt._Molteau.png/revision/latest?cb=20151116202540');
 }
 
 /* Default styling here */

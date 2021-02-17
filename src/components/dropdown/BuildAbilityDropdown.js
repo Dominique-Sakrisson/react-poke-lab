@@ -1,5 +1,5 @@
 import React from 'react'
-import {getAbility} from './MungeUtils.js'
+import {getAbility} from '../../MungeUtils.js'
 
 export default class AbilityDropdown extends React.Component {
     render() {

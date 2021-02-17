@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
-import Searcher from './BuildSearcher.js'
-import TypeDropdown from './BuildTypeDropdown.js'
-import EggDropdown from './BuildEggDropdown.js'
-import AbilityDropdown from './BuildAbilityDropdown.js'
-import PokeList from './PokeList.js'
-import SortOrder from './BuildSortOrderer.js'
-import Buttons from './BuildButtons.js'
+import Searcher from './components/BuildSearcher.js'
+import TypeDropdown from './components/dropdown/BuildTypeDropdown.js'
+import EggDropdown from './components/dropdown/BuildEggDropdown.js'
+import AbilityDropdown from './components/dropdown/BuildAbilityDropdown.js'
+import PokeList from './components/poke-items/PokeList.js'
+import SortOrder from './components/dropdown/BuildSortOrderer.js'
+import Buttons from './components/BuildButtons.js'
 import request from 'superagent'
-import Spinner from './Spinner.js'
+import Spinner from './components/Spinner.js'
 
 
 export default class SearchPage extends Component {

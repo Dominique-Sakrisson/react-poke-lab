@@ -1,6 +1,6 @@
 import React from 'react';
 import PokeItem from './PokeItem.js'
-import { getType} from './MungeUtils.js'
+import { getType} from '../../MungeUtils.js'
 
 export default class ImageList extends React.Component {
     render() {   
@@ -21,6 +21,7 @@ export default class ImageList extends React.Component {
             <>
             {
                 sortedArray.map((poke) => {
+                   
                     let classType = getType(poke);
 
                     console.log(classType);
