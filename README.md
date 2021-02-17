@@ -1,3 +1,9 @@
+# heres an image of the planning board in MIRO
+![Getting Started](./public/miroSH.png)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
