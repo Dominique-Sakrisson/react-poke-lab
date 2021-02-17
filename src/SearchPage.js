@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import Pokemon from './pokemon.js'
+
 import Searcher from './BuildSearcher.js'
 import TypeDropdown from './BuildTypeDropdown.js'
 import EggDropdown from './BuildEggDropdown.js'
@@ -7,13 +7,15 @@ import AbilityDropdown from './BuildAbilityDropdown.js'
 import PokeList from './PokeList.js'
 import SortOrder from './BuildSortOrderer.js'
 import Buttons from './BuildButtons.js'
-import request from 'superagent';
+import request from 'superagent'
+import Spinner from './Spinner.js'
 
 
 export default class SearchPage extends Component {
     state = {
         pokemon: [],
         query: '',
+        loading: false,
         filter: 'all',
         sortRev: '',
         sortByOrder: '',
@@ -26,10 +28,12 @@ export default class SearchPage extends Component {
 
     handlePokemonApiQuery = async () => {
         const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}`);
-
+        this.setState({loading: true})
         this.setState({pokemon: data.body.results, loading: false});
         console.log(this.state.pokemon);
     }
+
+
 
     render() {
 
@@ -116,7 +120,9 @@ export default class SearchPage extends Component {
                     <SortOrder onChange={handleOrder}/>
                     <Searcher onChange={handleInputChange}/>
                 </div> 
-
+                    {
+                        this.state.loading 
+                        ? <Spinner /> :
                 <div className="list-container">
                     {this.state.dropDisplay === 'type_1' && 
                         <PokeList Pokemon={displaySearchType} sortRev={this.state.sortRev}/>
@@ -128,6 +134,7 @@ export default class SearchPage extends Component {
                         <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
                     }
                 </div>
+                }
             </div>
         )
     }
