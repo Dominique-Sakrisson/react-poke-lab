@@ -27,7 +27,7 @@ export default class TypeDropdown extends React.Component {
             <div className='sort-drop'>
             <p className='drop-info'>Choose a Pokemon type to sort by</p>
             <select onChange={onChange} value={value}>
-                <option value='all'>All</option>
+                {/* <option value='all'>All</option> */}
                 {options}
             </select>
             </div>

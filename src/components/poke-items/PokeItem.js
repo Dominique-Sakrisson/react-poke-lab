@@ -1,5 +1,6 @@
 import React from 'react'
 import Details from './PokeDetails.js'
+import{ Link } from 'react-router-dom'
 
 export default class PokeItem extends React.Component {
     render() {
@@ -10,11 +11,12 @@ export default class PokeItem extends React.Component {
         } = this.props;
         return (
             <div className={`poke-image-div`}>
-            
-                <div className={`${classType} poke-back`}>
-                    <img src={Pokemon.url_image} alt={Pokemon.pokedex} />
-                </div>
-                <Details Pokemon={Pokemon} classType={classType}/>
+                <Link to={`pokemon/${Pokemon.pokemon}`}>
+                    <div className={`${classType} poke-back`}>
+                        <img src={Pokemon.url_image} alt={Pokemon.pokedex} />
+                    </div>
+                </Link>
+                    <Details Pokemon={Pokemon} classType={classType}/>
             </div>
         );
     }

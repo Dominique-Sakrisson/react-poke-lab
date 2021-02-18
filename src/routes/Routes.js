@@ -8,6 +8,7 @@ import {
   Switch
 } from 'react-router-dom';
 import Header from '../components/Header.js'
+import DetailPage from '../DetailPage.js'
 
 export default class Routes extends React.Component {
     render() {
@@ -21,9 +22,14 @@ export default class Routes extends React.Component {
                         render={(routerProps) => <HomePage{...routerProps}/>}
                 />
                 <Route 
-                    path='/search'
+                    path='/pokemon'
                         exact
                         render={(routerProps) => <SearchPage{...routerProps}/>}
+                />
+                <Route 
+                    path='/pokemon/:pokeName'
+                        exact
+                        render={(routerProps) => <DetailPage {...routerProps} />}
                 />
             </Switch>
         </Router>

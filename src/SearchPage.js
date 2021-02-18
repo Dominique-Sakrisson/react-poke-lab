@@ -110,8 +110,6 @@ export default class SearchPage extends Component {
             await this.handlePokemonApiQuery();
         }
     
-    
-
         return (
             <div className='container'>
                 
