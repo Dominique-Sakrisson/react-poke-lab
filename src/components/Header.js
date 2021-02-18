@@ -16,9 +16,10 @@ export default withRouter( class Header extends React.Component {
                                 Pokemon
                             </NavLink>
                         }
+{/*                         left out but not forgotten
                             <NavLink className='nav-link' exact activeClassName='selected' to='/pokemon/pokeName'>
                                 Pokemon Details
-                            </NavLink>
+                            </NavLink> */}
                         
                     </div>
                 </header>
