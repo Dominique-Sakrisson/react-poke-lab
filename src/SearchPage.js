@@ -13,39 +13,54 @@ import Spinner from './components/Spinner.js'
 
 export default class SearchPage extends Component {
     state = {
+        defaultList: [],
         pokemon: [],
         query: '',
         loading: false,
         filter: '',
-        sortRev: 'asc',
+        ability: '',
+        egg: '',
+        type: '',
+        sortRev: false,
         sortByOrder: '',
         dropDisplay: 'type_1',
         currentPage: 1,
+        perPage: 20,
     }
 
     componentDidMount = async () => {
         this.setState({loading: true});
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`);
+
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex/?perPage=801`);
         setTimeout(() => {
             this.setState({loading: false})
         }, 2000);
-        this.setState({pokemon: data.body.results});
+        this.setState({defaultList:data.body.results});
+        //we know this is getting the full list
+        
+        const initData = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex/?page=${this.state.currentPage}&perPage=${this.state.perPage}`);
+        this.setState({pokemon: initData.body.results});
+        //we know this is getting the paged list
     }
 
     handlePokemonApiQuery = async () => {
         this.setState({loading: true});
-        
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?direction=${this.state.sortRev}&page=${this.state.currentPage}&pokemon=${this.state.query}&`);
+        console.log(`current page: ${this.state.currentPage} pokemon list: ${this.state.pokemon} state type: ${this.state.type} egg group: ${this.state.egg} ability: ${this.state.ability}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=${this.state.currentPage}&ability_1=${this.state.ability}&egg_group_1=${this.state.egg}&type_1=${this.state.type}&pokemon=${this.state.query}`);
+
+          console.log(this.state.pokemon);
         setTimeout(() => {
             this.setState({loading: false})
         }, 1200);
         this.setState({pokemon: data.body.results});
         
     }
+
     handlePrevPage = async() =>{
         await this.setState({currentPage: this.state.currentPage - 1});
         await this.handlePokemonApiQuery();
     }
+
     handleNextPage = async() =>{
         await this.setState({currentPage: this.state.currentPage + 1});
         await this.handlePokemonApiQuery();
@@ -54,76 +69,48 @@ export default class SearchPage extends Component {
 
 
     render() {
-
-        const handleTypeButton = (e) => {
-            this.setState({filter: 'all'});
-            this.setState({dropDisplay: e.target.value});
+        //i know this is not changing the poke list in state
+        const handleTypeButton = async (e) => {
+            //toggle button is clicked, reset all filter variables
+            await this.setState({ability: '', egg: '', type: '', sortRev: false})
+            await this.setState({filter: 'all'});
+            await this.setState({dropDisplay: e.target.value});
+            await this.handlePokemonApiQuery();
+            console.log(this.state.pokemon);
         }
 
-        const handleTypeSort = (e) => {
-            this.setState({filter: e.target.value} )
+        const handleSort = async (e) => {
+            await this.setState({filter: e.target.value} );
+            await this.handlePokemonApiQuery();
         }
-        const handleEggSort = (e) => {
-            this.setState({filter: e.target.value} )
+        
+        const handleAbility = async(e) => {
+            await this.setState({ability: e.target.value})
+            await this.handlePokemonApiQuery();
         }
-        const handleAbilitySort = (e) => {
-            this.setState({filter: e.target.value} )
+        const handleEgg = async(e) => {
+            await this.setState({egg: e.target.value});
+            await this.handlePokemonApiQuery();
+        }
+        const handleType = async(e) => {
+            await this.setState({type: e.target.value});
+            await this.handlePokemonApiQuery();
+        }
+        const handleId = async (e)=> {
+            await this.setState({ability: '', egg: '', type: ''})
+            await this.handlePokemonApiQuery();
         }
         const handleOrder = async (e) => {
+            console.log(e.target.value);
             await this.setState({sortRev: e.target.value});
             await this.handlePokemonApiQuery();
         }
         const handleInputChange = async (e) => {
             await this.setState({query: e.target.value})
-
             await this.handlePokemonApiQuery();
         }
     
-        
-        const filterPokemonType = this.state.pokemon.filter((poke)=>{
-            if(!this.state.filter) return true;
-            if(this.state.filter === 'all') return true;
-            if(poke.type_1 === this.state.filter) {
-                return true;
-            }
-            return false;
-        })
-
-        const filterPokemonEgg = this.state.pokemon.filter((poke)=>{
-            if(!this.state.filter) return true;
-            if(this.state.filter === 'all') return true;
-            if (this.state.filter === poke.egg_group_1) {
-                return true;
-            }
-            return false;
-        })
-        const filterPokemonAbility = this.state.pokemon.filter((poke)=>{
-            if(!this.state.filter) return true;
-            if(this.state.filter === 'all') return true;
-            if (this.state.filter === poke.ability_1) {
-                return true;
-            }
-            return false;
-        })
-     
-        // const displaySearchType = filterPokemonType.filter((poke) => {
-        //     if (!this.state.query) return true;
-        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-        //     return false;
-        // })
-
-        // const displaySearchEgg = filterPokemonEgg.filter((poke) => {
-        //     if (!this.state.query) return true;
-        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-        //     return false;
-        // })
-        // const displaySearchAbility = filterPokemonAbility.filter((poke) => {
-        //     if (!this.state.query) return true;
-        //     if (poke.pokemon.substring(0,this.state.query.length) === this.state.query) return true;
-        //     return false;
-        // })
-        // console.log(this.state.pokemon);
-        // console.log(this.state.sortRev);
+    
 
         return (
             <div className='container'>
@@ -132,20 +119,19 @@ export default class SearchPage extends Component {
                     <Buttons handleButton={handleTypeButton} />
                     
                     {this.state.dropDisplay === 'ability_1' && 
-                        <AbilityDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleAbilitySort}/>
+                        <AbilityDropdown Pokemon={this.state.defaultList} value={this.state.ability}  onChange={handleAbility}/>
                     }
                     {this.state.dropDisplay === 'egg_group_1' && 
-                        <EggDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleEggSort}/>
+                        <EggDropdown Pokemon={this.state.defaultList} value={this.state.egg}  onChange={handleEgg}/>
                     }
                     {this.state.dropDisplay === 'type_1' && 
-                        <TypeDropdown Pokemon={this.state.pokemon} value={this.state.filter}  onChange={handleTypeSort}/>
+                        <TypeDropdown Pokemon={this.state.defaultList} value={this.state.type}  onChange={handleType}/>
                     }
                     
                     <SortOrder onChange={handleOrder}/>
                     
                     <Searcher onChange={handleInputChange}/>
                     <button>Submit Search</button>
-
 
                     <button onClick={this.handlePrevPage}>Prev</button>
                     <span>Page {this.state.currentPage}</span>
@@ -154,17 +140,9 @@ export default class SearchPage extends Component {
                     
                 {this.state.loading ? 
                 <Spinner /> 
-                : <div className="list-container">
-                    {/* {this.state.dropDisplay === 'type_1' &&  */}
-                        <PokeList Pokemon={this.state.pokemon} sortRev={this.state.sortRev}/>
-                    {/* } */}
-{/* 
-                    {this.state.dropDisplay === 'egg_group_1' && 
-                        <PokeList Pokemon={this.} sortRev={this.state.sortRev}/>
-                    }
-                    {this.state.dropDisplay === 'ability_1' && 
-                        <PokeList Pokemon={displaySearchAbility} sortRev={this.state.sortRev}/>
-                    } */}
+                : 
+                <div className="list-container">
+                    <PokeList Pokemon={this.state.pokemon} sortRev={this.state.sortRev} />
                 </div>
                 }
             </div>

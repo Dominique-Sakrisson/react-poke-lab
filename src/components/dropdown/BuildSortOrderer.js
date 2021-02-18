@@ -8,8 +8,8 @@ export default class SortOrderer extends React.Component {
                     Sort By Id
                 </p>
                 <select onChange={this.props.onChange}>
-                    <option value='asc'>Top Down</option>
-                    <option value='desc'>Bottom Up</option>
+                    <option value='true'>Top Down</option>
+                    <option value='false'>Bottom Up</option>
                 </select>    
             </div>
         )

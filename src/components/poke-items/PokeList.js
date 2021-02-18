@@ -10,21 +10,17 @@ export default class ImageList extends React.Component {
         } = this.props;
 
         let sortedArray = Pokemon.slice();
-        
-        // if (sortRev === 'true') {
-        //      sortedArray.reverse();
-        //  } else{
-        //     sortedArray.sort();
-        //  }
-       
+        if (sortRev === 'true') {
+             sortedArray.reverse();
+         } else{
+            sortedArray.sort();
+         }
+         
         return (
             <>
             {
-                sortedArray.map((poke) => {
-                   
+                sortedArray.map((poke) => { 
                     let classType = getType(poke);
-
-                    
                     return <PokeItem key={poke._id} Pokemon={poke} classType={classType}/> 
                 })
             }
